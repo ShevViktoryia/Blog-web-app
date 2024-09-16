@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import posts from "./public/js/posts.js";
 
 const app = express();
 const port = 3000;
@@ -13,9 +14,13 @@ app.get("/", (req, res) => {
 });
 
 app.post("/submit", (req, res) => {
+  const title = req.body["title"];
+  const descr = req.body["descr"];
+  posts.push({ title, descr });
   res.render("index.ejs", {
-    title: req.body["title"],
-    descr: req.body["descr"],
+    title: title,
+    descr: descr,
+    posts: posts,
   });
 });
 

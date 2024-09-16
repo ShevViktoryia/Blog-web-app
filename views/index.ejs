@@ -1,15 +1,17 @@
 <%- include('patrials/header.ejs') %> <%- include('post.ejs') %>
+
 <div class="posts-container">
   <div class="post">
     <h2>Monday</h2>
     <p>The best dreams happen when you’re awake.</p>
   </div>
-  <% if(locals.title && locals.descr) { %>
+  <% if(locals.title && locals.descr && locals.posts ) { posts.forEach(post => {
+  %>
 
   <div class="post">
-    <h2><%= title %></h2>
-    <p><%= descr %></p>
+    <h2><%= post.title %></h2>
+    <p><%= post.descr %></p>
   </div>
-  <%}%>
+  <%});}%>
 </div>
 <%- include('patrials/footer.ejs') %>
